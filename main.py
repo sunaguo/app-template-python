@@ -1,5 +1,5 @@
 # Copyright (c) 2020 brainlife.io at University of Texas at Austin and Indiana University
-
+#
 # This file is a template for a python-based brainlife.io App
 # brainlife stages this git repo, writes `config.json` and execute this script.
 # this script reads the `config.json` and execute pynets container through singularity
@@ -7,6 +7,8 @@
 # you can run this script(main) without any parameter to test how this App will run outside brainlife
 # you will need to copy config.json.brainlife-sample to config.json before running `main` as `main`
 # will read all parameters from config.json
+#
+# Author: Franco Pestilli
 
 # set up environment
 from dipy.workflows.reconst import ReconstMAPMRIFlow
