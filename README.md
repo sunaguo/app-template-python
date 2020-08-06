@@ -1,7 +1,7 @@
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.1-blue.svg)](https://doi.org/10.25663/bl.app.1)
 
-# app-brainlife-python
+# app-template-python
 This is a template for a python-based brainlife.io/app
 
 # app-example-documentation
