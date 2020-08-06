@@ -10,6 +10,8 @@
 #
 # Author: Franco Pestilli
 
+# START EDITING THE CODE BELOW TO REUSE THIS TEMPLATE
+
 # set up environment
 from dipy.workflows.reconst import ReconstMAPMRIFlow
 import json
