@@ -1,4 +1,4 @@
-# Copyright (c) 2020 brainlife.io at University of Texas at Austin and Indiana University
+# Copyright (c) 2020 brainlife.io The University of Texas at Austin and Indiana University
 #
 # This file is a template for a python-based brainlife.io App
 # brainlife stages this git repo, writes `config.json` and execute this script.
