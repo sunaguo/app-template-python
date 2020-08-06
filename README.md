@@ -71,8 +71,7 @@ bl dataset download 5a0dcb1216e499548135dd27 && mv 5a0dcb1216e499548135dd27 inpu
 
 ## Output
 
-All output files will be generated under the current working directory (pwd). The main output of this App is a file called `output.mat`. This file contains following object.
-
+All output files will be generated under the current working directory (pwd). The main output of this App is a file called `save_metrics`.
 ```
 save_metrics
 ```
@@ -83,4 +82,4 @@ The secondary output of this app is `product.json`. This file allows web interfa
 
 ### Dependencies
 
-This App only requires DIPY.org to run. If you don't have singularity, you will need to install following dependencies.
+This App only requires dipy to run. 
