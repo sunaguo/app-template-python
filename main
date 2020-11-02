@@ -9,4 +9,4 @@
 # Author: Franco Pestilli
 
 # run the actual python code
-./main.py $t1
+./main.py
