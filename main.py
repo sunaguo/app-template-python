@@ -1,4 +1,4 @@
-# Copyright (c) 2020 brainlife.io The University of Texas at Austin and Indiana University
+# Copyright (c) 2020 brainlife.io
 #
 # This file is a template for a python-based brainlife.io App
 # brainlife stages this git repo, writes `config.json` and execute this script.
@@ -9,34 +9,40 @@
 # will read all parameters from config.json
 #
 # Author: Franco Pestilli
-
-# START EDITING THE CODE BELOW TO REUSE THIS TEMPLATE
+# The University of Texas at Austin
 
 # set up environment
-from dipy.workflows.reconst import ReconstMAPMRIFlow
 import json
-import os.path
+import nibabel as nib
+import dipy
+
+from dipy.align.reslice import reslice
+from dipy.data import get_fnames
 
 # load inputs from config.json
 with open('config.json') as config_json:
 	config = json.load(config_json)
 
-	# Load into variables predefined code inputs
-	data_file = str(config['dwi'])
-	data_bval = str(config['bvals'])
-	data_bvec = str(config['bvecs'])
-	lap = bool(config['lap'])
-	pos = bool(config['pos'])
-	lap_weighting = float(config['laplacian_weighting'])
-  
-  # Defined final output metrics to save into file 
-	save_metrics = ['rtop', 'msd', 'qiv', 'rtap', 'rtpp', 'ng', 'perng', 'parng']
-	
-  # get the command to run (in this case this is a python workflow)
-  path = os.getcwd()
-	mmri_flow = ReconstMAPMRIFlow()
+# Load into variables predefined code inputs
+data_file = str(config['t1'])
+ 
+# set the output resolution
+out_res = [ int(v) for v in config['outres'].split(" ")]
 
-  # run the actual python code (in this case part of the DIPY library)
-  mmri_flow.run(data_file=data_file, data_bval=data_bval, data_bvec=data_bvec,
-		  out_dir=path, laplacian=lap, positivity=pos, save_metrics=save_metrics,
-		  lap_weighting=lap_weighting)
+# we load the input T1w that we would like to resample
+img = nib.load(data_file)
+
+# we get the data from the nifti file
+input_data   = img.get_data()
+input_affine = img.affine
+input_zooms  = img.header.get_zooms()[:3]
+
+# resample the data
+out_data, out_affine = reslice(input_data, input_affine, input_zooms, out_res)
+
+# create the new NIFTI file for the output
+out_img = nib.Nifti1Image(out_data, out_affine)
+
+# save the output file (with the new resolution) to disk
+nib.save(out_img, 'out_dir/t1.nii.gz')
+
