@@ -33,7 +33,7 @@ out_res = [ int(v) for v in config['outres'].split(" ")]
 img = nib.load(data_file)
 
 # we get the data from the nifti file
-input_data   = img.get_data()
+input_data   = img.get_fdata()
 input_affine = img.affine
 input_zooms  = img.header.get_zooms()[:3]
 
@@ -45,4 +45,8 @@ out_img = nib.Nifti1Image(out_data, out_affine)
 
 # save the output file (with the new resolution) to disk
 nib.save(out_img, 'out_dir/t1.nii.gz')
+
+# adding this so it's a unique version of the template
+with open('out_dir/yay.txt', 'w') as f:
+	f.write('Hellooooooow first app!')
 
