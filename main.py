@@ -12,11 +12,12 @@
 # The University of Texas at Austin
 
 # set up environment
-from dipy.align.reslice import reslice
-from dipy.data import get_fnames
 import json
-import os.path
 import nibabel as nib
+import dipy as dp
+
+from dp.align.reslice import reslice
+from dp.data import get_fnames
 
 # load inputs from config.json
 with open('config.json') as config_json:
@@ -27,9 +28,6 @@ with open('config.json') as config_json:
     
     # set the output resolution
     out_res = tuple( config['outres'] )
-
-    # set name for output file
-    out_name = config['outname']
 
 # we load the input T1w that we would like to resample
 img = nib.load(data_file)
@@ -46,5 +44,5 @@ out_data, out_affine = reslice(input_data, input_affine, input_zooms, out_res)
 out_img = nib.Nifti1Image(out_data, out_affine)
 
 # save the output file (with the new resolution) to disk
-nib.save(out_img, 't1.nii.gz')
+nib.save(out_img, 'out_dir/t1.nii.gz')
 
