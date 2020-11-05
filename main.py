@@ -14,20 +14,20 @@
 # set up environment
 import json
 import nibabel as nib
-import dipy as dp
+import dipy
 
-from dp.align.reslice import reslice
-from dp.data import get_fnames
+from dipy.align.reslice import reslice
+from dipy.data import get_fnames
 
 # load inputs from config.json
 with open('config.json') as config_json:
 	config = json.load(config_json)
 
-	# Load into variables predefined code inputs
-	data_file = str(config['t1'])
-    
-    # set the output resolution
-    out_res = tuple( config['outres'] )
+# Load into variables predefined code inputs
+data_file = str(config['t1'])
+ 
+# set the output resolution
+out_res = tuple(config['outres'])
 
 # we load the input T1w that we would like to resample
 img = nib.load(data_file)

@@ -9,7 +9,7 @@
 # Author: Franco Pestilli
 
 # make output directory
-make -p out_dir
+mkdir -p out_dir
 
 # run the actual python code
-singularity exec -e docker://brainlife/dipy:1.1.1 ./main.py
+singularity exec docker://brainlife/dipy:1.1.1 ./main.py
