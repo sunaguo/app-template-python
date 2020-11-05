@@ -27,7 +27,7 @@ with open('config.json') as config_json:
 data_file = str(config['t1'])
  
 # set the output resolution
-out_res = tuple(config['outres'])
+out_res = [ int(v) for v in config['outres'].split(" ")]
 
 # we load the input T1w that we would like to resample
 img = nib.load(data_file)
