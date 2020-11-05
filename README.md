@@ -1,5 +1,5 @@
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
-[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.1-blue.svg)](https://doi.org/10.25663/bl.app.1)
+[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.444-blue.svg)](https://doi.org/10.25663/bl.app.444)
 
 # app-template-python
 This is a template for a python-based brainlife.io/app
@@ -40,7 +40,7 @@ We ask that you the following articles when publishing papers that used data, co
 
 ### On Brainlife.io
 
-You can submit this App online at [https://doi.org/10.25663/bl.app.1](https://doi.org/10.25663/bl.app.1) via the "Execute" tab.
+You can submit this App online at [https://doi.org/10.25663/bl.app.444](https://doi.org/10.25663/bl.app.444) via the "Execute" tab.
 
 ### Running Locally (on your machine)
 
@@ -49,7 +49,7 @@ You can submit this App online at [https://doi.org/10.25663/bl.app.1](https://do
 
 ```json
 {
-  "t1": "./input/track/t1.nii.gz"
+  "t1": "t1.nii.gz"
 }
 ```
 
@@ -67,21 +67,17 @@ If you don't have your own input file, you can download sample datasets from Bra
 npm install -g brainlife
 bl login
 mkdir input
-bl dataset download 5a0e604116e499548135de87 && mv 5a0e604116e499548135de87 input/track
-bl dataset download 5a0dcb1216e499548135dd27 && mv 5a0dcb1216e499548135dd27 input/dtiinit
+bl dataset download 5a0f0fad2c214c9ba8624376#5a050966eec2b300611abff2 && mv 5a0f0fad2c214c9ba8624376#5a050966eec2b300611abff2 .
 ```
 
 ## Output
 
-All output files will be generated under the current working directory (pwd). The main output of this App is a file called `save_metrics`.
-```
-save_metrics
-```
+All output file (a resampled T1w NIFTI-1 file) will be generated inside the current working directory (pwd), inside a specifc directory called:
 
-#### Product.json
-
-The secondary output of this app is `product.json`. This file allows web interfaces, DB and API calls on the results of the processing. 
+```
+out_dir
+```
 
 ### Dependencies
 
-This App only requires dipy to run. 
+This App only requires DIPY.org to run. 
