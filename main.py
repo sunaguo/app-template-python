@@ -1,4 +1,4 @@
-# Copyright (c) 2020 brainlife.io The University of Texas at Austin and Indiana University
+# Copyright (c) 2020 brainlife.io
 #
 # This file is a template for a python-based brainlife.io App
 # brainlife stages this git repo, writes `config.json` and execute this script.
@@ -9,9 +9,11 @@
 # will read all parameters from config.json
 #
 # Author: Franco Pestilli
+# The University of Texas at Austin
 
 # set up environment
-from dipy.workflows.reconst import ReconstMAPMRIFlow
+from dipy.align.reslice import reslice
+from dipy.data import get_fnames
 import json
 import os.path
 import nibabel as nib
@@ -29,7 +31,7 @@ with open('config.json') as config_json:
     # set name for output file
     out_name = config['outname']
 
-# we load the input T1w that we would like to resample from disk
+# we load the input T1w that we would like to resample
 img = nib.load(data_file)
 
 # we get the data from the nifti file
